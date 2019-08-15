@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <main-page/>
+    <main-page></main-page>
+    <upload></upload>
+    <song-page></song-page>
   </div>
 </template>
 
 <script>
-import MainPage from './components/main-page';
-
+import MainPage from './components/main-page'
+import SongPage from './components/song-page'
+import Upload from './components/upload'
 export default {
   data() {
     return {
@@ -14,7 +17,7 @@ export default {
     };
   },
   components: {
-    MainPage
+    MainPage, Upload, SongPage
   }
 };
 </script>
