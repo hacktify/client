@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import MainPage from './components/main-page';
-
+import MainPage from './components/main-page'
 export default {
   data() {
     return {
@@ -16,7 +15,8 @@ export default {
     };
   },
   components: {
-    MainPage
+    MainPage,
+    
   }
 };
 </script>
