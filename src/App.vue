@@ -3,6 +3,7 @@
     <!-- <main-page>
     <div id="upload-page"></div> -->
     <h1>Test</h1>
+
   </div>
 </template>
 
@@ -16,7 +17,6 @@ export default {
   },
   components: {
     MainPage,
-    
   }
 };
 </script>
