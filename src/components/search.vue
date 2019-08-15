@@ -1,23 +1,17 @@
 <template>
-  <div class="search">
-    <input placeholder="Search" id="search" v-model="search">
-  </div>
+  <b-input-group class="mt-3">
+    <b-form-input placeholder="Search"></b-form-input>
+    <b-input-group-append>
+      <b-button variant="info"><font-awesome-icon icon="search"/></b-button>
+    </b-input-group-append>
+  </b-input-group>
 </template>
 <script>
 export default {
-  props: {
-    search: String
-  },
   data() {
     return {
       search: '',
     }
   },
-  watch: {
-    search: function(newVal, oldVal){
-      console.log(newVal)
-      this.$emit('search',newVal);
-    }
-  }
 }
 </script>

@@ -1,12 +1,25 @@
 <template>
   <div id="main-page">
-    <div class="container">
-      <Search @search="getSearch(search)" :search="search"/>
+    <div id="content">
+      <nav>
+        <b-container>
+          <div class="brand">Hacktify</div>
+          <Search/>
+        </b-container>
+      </nav>
+      <div class="item--list">
+        <div class="container">
+          <Item/>
+        </div>
+      </div>
     </div>
+    <Upload />
   </div>
 </template>
 <script>
 import Search from './search'
+import Item from './item'
+import Upload from './upload'
 export default {
   data() {
     return {
@@ -14,7 +27,7 @@ export default {
     };
   },
   components: {
-    Search
+    Search,Item,Upload
   },
   methods: {
     getSearch(search){
