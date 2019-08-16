@@ -1,6 +1,9 @@
 $main-color: #FF9900;
 $semi-black-color: #222222;
 $radius: 7px;
+*{
+  font-family: 'Raleway', sans-serif;
+}
 body{
   min-height: 100vh;
   background-color: black!important;
@@ -17,6 +20,7 @@ nav{
     // padding: 10px 0;
     padding-right: 20px;
     font-size: 30px;
+    font-weight: bold;
   }
   input[type=text] {
     border: 2px solid white;
@@ -95,6 +99,22 @@ nav{
     }
   }
   .upload--input{
+    .upload--input--title{
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid $main-color;
+      width: 100%;
+      padding: 10px 0;
+      margin-bottom: 1px;
+      color: white;
+    }
+    .upload--input--title:focus{
+      margin-bottom: 0px;
+      border-bottom: 2px solid $main-color;
+    }
+    .upload--input--title::placeholder{
+      color: $main-color;
+    }
     #upload--input--file{
       width: 0.1px;
       height: 0.1px;
@@ -108,7 +128,7 @@ nav{
       padding-top: 100%;
       position: relative;
       cursor: pointer;
-      border: 3px solid $main-color;
+      border: 4px solid $main-color;
       border-radius: $radius;
     }
     span{
@@ -116,7 +136,7 @@ nav{
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 70px;
+      font-size: 130px;
       text-align: center;
     }
   }
@@ -173,4 +193,30 @@ nav{
 .aplayer--active{
   transition: 0.1s!important;
   transform: translateY(-110px)!important;
+}
+
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
+.full-center{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+#login, #register{
+  width: 100%;
+  h1{
+    color: $main-color;
+    font-weight: bold;
+  }
+  input[type=submit]{
+    background-color: $main-color;
+    color: black;
+    border: 0;
+  }
+  input[type=submit]:focus{
+    box-shadow: 0 0 0 0.2rem $main-color;
+  }
 }
