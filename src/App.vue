@@ -1,6 +1,10 @@
 <template>
   <div id="app">
     <main-page :songs="songs" ></main-page>
+    <b-row class="justify-center">
+      <Login></Login>
+      <Register></Register>
+    </b-row>
     <!-- <upload></upload> -->
     <!-- <song-page></song-page> -->
     <b-container>
@@ -11,6 +15,8 @@
 
 <script>
 import ax from '../config/axios'
+import Login from './components/Login'
+import Register from './components/Register'
 import MainPage from './components/main-page'
 import SongPage from './components/song-page'
 import Upload from './components/upload'
@@ -32,7 +38,9 @@ export default {
     MainPage,
     Upload,
     SongPage,
-    Aplayer
+    Aplayer,
+    Login,
+    Register
   },
   created() {
     console.log('Created')
