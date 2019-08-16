@@ -4,7 +4,7 @@
       <div class="brand">Hacktify</div>
       <Search></Search>
       <div class="nav--right">
-        <b-button variant="primary">Upload</b-button>
+        <b-button>Upload</b-button>
       </div>
     </b-container>
   </nav>
