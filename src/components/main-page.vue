@@ -3,7 +3,9 @@
     <Navbar></Navbar>
     <div class="item--list">
       <div class="container">
-        <Item></Item>
+        <b-row>
+        <Item v-for="(song,i) in songs" :key="i" :song="song"></Item>
+        </b-row>
       </div>
     </div>
   </div>
@@ -20,5 +22,6 @@ export default {
   components: {
     Item, Navbar
   },
+  props: ['songs']
 }
 </script>

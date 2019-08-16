@@ -1,5 +1,5 @@
 <template>
-   <social-sharing url="https://www.google.com"
+   <social-sharing :url="song.src"
                       title="Hacktify: Music on Your Hand!"
                       description="Hacktify is the best way to enjoy the music"
                       hashtags="hacktify,vue,components"
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-    props: ['linkToMusic']
+    props: ['song']
 }
 </script>
 
