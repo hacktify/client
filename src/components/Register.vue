@@ -24,7 +24,7 @@ export default {
         signUp() {
             ax({
                 method: 'post',
-                url: '/users/signup',
+                url: '/users/register',
                 data: {
                     email: this.email,
                     username: this.username,

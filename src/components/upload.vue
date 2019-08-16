@@ -14,11 +14,12 @@
       <p class="upload--desc--author">Size: <span v-html="song.size"></span> MB</p>
     </div>
     <div class="upload--action">
-      <b-button>Upload</b-button>
+      <b-button @click="uploadSong">Upload</b-button>
     </div>
   </div>
 </template>
 <script>
+import ax from '../../config/axios'
 export default {
   data(){
     return {
@@ -32,8 +33,32 @@ export default {
   methods:{
     getFileDetail(e){
       this.song.isFile = true;
+      this.song.file = e.target.files[0]
       this.song.title = e.target.files[0].name;
       this.song.size = e.target.files[0].size / 1000000;
+    },
+    uploadSong(){
+      console.log('Upload~')
+      let formData = new FormData()
+
+      formData.append('file', this.song.file)
+      formData.append('title', this.song.title)
+
+
+      ax({
+        method: 'post',
+        url: '/musics/create',
+        data: formData,
+        config: {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        }
+      })
+      .then(({data}) => {
+        alert('OKE')
+      })
+      .catch(console.log)
     }
   }
 }

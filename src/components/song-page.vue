@@ -8,10 +8,10 @@
           </b-col>
           <b-col cols="8">
             <div class="song--title">
-              <h2>Title</h2>
+              <h2>{{ song.title }}</h2>
             </div>
             <div class="song--desc">
-              <p>Uploaded By this guy</p>
+              <p>{{ song.UserId.username}}</p>
             </div>
             <div class="song--action">
               <b-button class="song--action--download">Download</b-button>
@@ -36,6 +36,7 @@ import SocialSharing from './social-sharing'
 export default {
   components: {
     Navbar, SocialSharing
-  }  
+  },
+  props: ['song']  
 }
 </script>

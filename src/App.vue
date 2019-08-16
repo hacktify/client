@@ -6,7 +6,7 @@
       <Register></Register>
     </b-row>
     <!-- <upload></upload> -->
-    <!-- <song-page></song-page> -->
+    <song-page :song="song"></song-page>
     <b-container>
       <aplayer class="shadow" :song="song"></aplayer>
     </b-container>
