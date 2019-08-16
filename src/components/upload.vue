@@ -1,12 +1,12 @@
 <template>
   <div id="upload" class="upload--active">
     <div class="nav--top">
-      <a href="#" class="nav--action--cancel">Cancel</a>
+      <a @click="$emit('upload:toggle')" href="#" class="nav--action--cancel">Cancel</a>
     </div>
     <div class="upload--input">
       <input type="file" name="file" id="upload--input--file" accept=".wav,.mp3,.m4a" @change="getFileDetail">
       <label for="upload--input--file"><span v-if="!song.isFile">+</span><span v-if="song.isFile"><i class="fa fa-music"></i></span></label>
-      <input type="text" class="upload--input--title" placeholder="Title">
+      <input v-model="title" type="text" class="upload--input--title" placeholder="Title">
     </div>
     <div class="upload--title">
       <h2 v-html="song.title">Title</h2>
@@ -15,7 +15,7 @@
       <p class="upload--desc--author">Size: <span v-html="song.size"></span> MB</p>
     </div>
     <div class="upload--action">
-      <b-button @click="uploadSong">Upload</b-button>
+      <b-button @click="uploadSong">{{ status }}</b-button>
     </div>
   </div>
 </template>
@@ -28,7 +28,9 @@ export default {
         title: '',
         size: '',
         isFile: false
-      }
+      },
+      title: '',
+      status: 'Upload'
     }
   },
   methods:{
@@ -39,12 +41,12 @@ export default {
       this.song.size = e.target.files[0].size / 1000000;
     },
     uploadSong(){
+      this.status = '...'
       console.log('Upload~')
       let formData = new FormData()
 
       formData.append('file', this.song.file)
-      formData.append('title', this.song.title)
-
+      formData.append('title', this.title)
 
       ax({
         method: 'post',
@@ -57,7 +59,14 @@ export default {
         }
       })
       .then(({data}) => {
-        alert('OKE')
+        this.status = 'Upload'
+        this.song = ''
+        this.title = ''
+        this.$emit('upload:done')
+        Swal.fire({
+                title: 'Upload Success',
+                type: 'success'
+                })
       })
       .catch(console.log)
     }

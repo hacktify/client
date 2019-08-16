@@ -1,25 +1,21 @@
 <template>
   <div id="app">
-    <b-container>
-      <!-- <b-row class="justify-center">
-        <Login></Login>
-        <Register></Register>
-      </b-row>
-    </b-container> -->
-    <main-page :songs="songs" ></main-page>
-    <b-row class="justify-center">
-      <Login></Login>
+    <div v-if="onPage == 'login'" class="justify-center">
+      <Login @login:done="onPage = 'main'"></Login>
       <Register></Register>
-    </b-row>
-    <!-- <upload></upload> -->
-    <song-page :song="song"></song-page>
-    <aplayer class="shadow" :song="song"></aplayer>
+    </div>
+    <Navbar @auth:logout="signOut()" @search:title="searchByTitle($event)" @to:main="onPage = 'main'" @upload:toggle="uploadStatus = !uploadStatus" v-if="onPage == 'main' || onPage == 'song'"></Navbar>
+    <main-page @song:detail="loadDetail($event)" @song:play="playSong($event)" v-if="onPage == 'main'" :songs="songs" ></main-page>
+    <song-page v-if="onPage == 'song'" :song="song"></song-page>
+    <upload @upload:toggle="uploadStatus = false" @upload:done="fetchSongs()" v-if="uploadStatus"></upload>
+    <aplayer v-if="musicPlayer" class="shadow" :song="song"></aplayer>
   </div>
 </template>
 
 <script>
 import ax from '../config/axios'
 import Login from './components/Login'
+import Navbar from './components/navbar'
 import Register from './components/Register'
 import MainPage from './components/main-page'
 import SongPage from './components/song-page'
@@ -30,12 +26,17 @@ export default {
     return {
       message: 'Hello world',
       song: {
-        title: 'Day 1',
-        artist: 'Honne',
-        src: 'https://storage.googleapis.com/hacktify/1565875037204HONNE%20-%20Day%201%20%E2%97%91-64.mp3',
-        pic: 'https://via.placeholder.com/100/ff9900/ff9900'
+        title: '',
+        artist: '',
+        src: '',
+        pic: 'https://via.placeholder.com/100/ff9900/ff9900',
+        theme: '#ff9900'
       },
-      songs: []
+
+      songs: [],
+      onPage: 'login',
+      uploadStatus: false,
+      musicPlayer: false
     };
   },
   components: {
@@ -44,16 +45,65 @@ export default {
     SongPage,
     Aplayer,
     Login,
-    Register
+    Register,
+    Navbar
   },
   created() {
+    if(localStorage.getItem('access_token')){
+      this.onPage = 'main'
+    }
+
     console.log('Created')
-    ax.get('/musics/allMusic')
+    this.fetchSongs()
+  },
+  methods: {
+    fetchSongs() {
+      ax.get('/musics/allMusic')
       .then(({data}) => {
         console.log(data)
         this.songs = data
       })
       .catch(console.log)
+    },
+    playSong(payload) {
+      this.musicPlayer = false
+      setTimeout(() => { 
+        let src = encodeURI(payload.fileUrl)
+        this.song.title = payload.title
+        this.song.artist = payload.UserId.username
+        this.song.src = src
+        this.musicPlayer = true
+      }, 100);
+    },
+    loadDetail(payload){
+      this.onPage = 'song'
+      let src = encodeURI(payload.fileUrl)
+      this.song.title = payload.title
+      this.song.artist = payload.UserId.username
+      this.song.src = src
+    },
+    searchByTitle(keyword){
+      this.onPage = 'main'
+      let query = encodeURI(keyword)
+
+      ax({
+        method: 'get',
+        url: `/musics/song?title=${query}`
+      })
+      .then(({data}) => {
+        this.songs = data
+      })
+      .catch(console.log)
+    },
+    signOut(){
+      localStorage.clear();
+      this.onPage = 'login';
+      this.musicPlayer = false;
+      Swal.fire({
+        type: 'success',
+        title: 'Bye!'
+      })
+    }
   }
 };
 </script>

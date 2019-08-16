@@ -16,11 +16,14 @@ nav{
     align-items: baseline;
   }
   .brand{
-    color: $main-color;
     // padding: 10px 0;
     padding-right: 20px;
     font-size: 30px;
     font-weight: bold;
+    a{
+      color: $main-color;
+      text-decoration: none;
+    }
   }
   input[type=text] {
     border: 2px solid white;
@@ -36,12 +39,19 @@ nav{
   }
   .nav--right{
     margin-left: 20px;
+    display: flex;
     button{
       padding: 8px 40px;
       background-color: $main-color;
       color: black;
       border: 0;
       outline: 0;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .btn--logout{
+      background-color: $semi-black-color;
+      color: white;
     }
   }
 }
@@ -52,13 +62,15 @@ nav{
   padding-top: 100%;
   background-color: $main-color;
   box-sizing: border-box;
-  font-size: 100px;
   border-radius: $radius;
-  i{
-    position: absolute;
-    color: black;
-    top: calc(50% - 50px);
-    left: calc(50% - 50px);
+  .album-cover__icon{
+    i{
+      font-size: 100px;
+      position: absolute;
+      color: black;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+    }
   }
 }
 .song{
@@ -66,8 +78,34 @@ nav{
   margin-bottom: 20px;
   .song--title{
     font-size: 25px;
-    margin: 10px 0;
+    padding: 10px 0;
     color: white;
+  }
+  .song--action{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    transition: 0.1s;
+    a{
+      color: $main-color;
+      font-size: 40px;
+      transition: 0.1s;
+      outline: none;
+    }
+    a:hover{
+      transition: 0.1s;
+      transform: scale(1.1);
+    }
+    a:focus{
+      box-shadow: 0 0 0 0.2rem $main-color;
+    }
   }
 }
 .song:hover{
@@ -75,6 +113,10 @@ nav{
 }
 .song:hover .album-cover{
   text-decoration: none;
+}
+.song:hover .song--action{
+  transition: 0.1s;
+  opacity: 1;
 }
 
 #upload{

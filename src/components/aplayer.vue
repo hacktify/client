@@ -1,8 +1,12 @@
 <template>
+<div>
+  <h1>{{ singleMusic }}
+    </h1>
     <aplayer class="aplayer--active" autoplay
         style="background-color: #222222; color: #ffffff;"
-      :music="music"
+      :music="song"
     ></aplayer>
+</div>
 </template>
 
 <script>
@@ -13,13 +17,7 @@ export default {
     },
     data() {
       return {
-        music: {
-          title: this.song.title,
-          artist: this.song.UserId.username,
-          theme: '#ff9900',
-          src: this.song.src,
-          pic: this.song.pic
-        }
+        
       }
     },
     props: ['song']

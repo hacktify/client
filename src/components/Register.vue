@@ -1,5 +1,5 @@
 <template>
-    <div class="col-4">
+    <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="full-center">
             <div id="register">
                 <h1 class="standout text-center">Sign Up</h1>
@@ -36,8 +36,14 @@ export default {
                 }
             })
             .then(({data}) => {
-                this.$emit('register:done')
-                console.log(data)
+                Swal.fire({
+                title: 'Register Success',
+                type: 'success'
+                })
+                this.email = ''
+                this.username = ''
+                this.password = ''
+
             })
             .catch( err => {
                 console.log(err)
