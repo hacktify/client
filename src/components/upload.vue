@@ -1,11 +1,12 @@
 <template>
-  <div id="upload">
+  <div id="upload" class="upload--active">
     <div class="nav--top">
       <a href="#" class="nav--action--cancel">Cancel</a>
     </div>
     <div class="upload--input">
       <input type="file" name="file" id="upload--input--file" accept=".wav,.mp3,.m4a" @change="getFileDetail">
       <label for="upload--input--file"><span v-if="!song.isFile">+</span><span v-if="song.isFile"><i class="fa fa-music"></i></span></label>
+      <input type="text" class="upload--input--title" placeholder="Title">
     </div>
     <div class="upload--title">
       <h2 v-html="song.title">Title</h2>

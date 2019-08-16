@@ -1,11 +1,15 @@
 <template>
     <div class="col-4">
-        <h1 class="standout text-center">Log In</h1>
-        <form>
-            <input class="form-control mt-4 shadow-sm" type="email" placeholder="Email">
-            <input class="form-control mt-3 shadow-sm" type="password" placeholder="Password">
-            <input class="form-control mt-3 btn-primary" type="submit" value="Log In">
-        </form>
+        <div class="full-center">
+            <div id="login">
+                <h1 class="standout text-center">Log In</h1>
+                <form>
+                    <input class="form-control mt-4 shadow-sm" type="email" placeholder="Email">
+                    <input class="form-control mt-3 shadow-sm" type="password" placeholder="Password">
+                    <input class="form-control mt-3 btn-primary" type="submit" value="Log In">
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 

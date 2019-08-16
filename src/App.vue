@@ -1,15 +1,15 @@
 <template>
   <div id="app">
-    <main-page :songs="songs" ></main-page>
-    <b-row class="justify-center">
-      <Login></Login>
-      <Register></Register>
-    </b-row>
-    <!-- <upload></upload> -->
-    <!-- <song-page></song-page> -->
     <b-container>
-      <aplayer class="shadow" :song="song"></aplayer>
-    </b-container>
+      <!-- <b-row class="justify-center">
+        <Login></Login>
+        <Register></Register>
+      </b-row>
+    </b-container> -->
+    <main-page :songs="songs" ></main-page>
+    <upload></upload>
+    <!-- <song-page></song-page> -->
+    <aplayer class="shadow" :song="song"></aplayer>
   </div>
 </template>
 
