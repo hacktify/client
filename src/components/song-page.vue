@@ -4,7 +4,7 @@
       <div class="song-page--detail">
         <b-row>
           <b-col cols="4">
-            <div class="song--album-cover album-cover"></div>
+            <div class="song--album-cover album-cover"><i class="fa fa-music"></i></div>
           </b-col>
           <b-col cols="8">
             <div class="song--title">

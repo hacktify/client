@@ -1,5 +1,11 @@
 <template>
   <div id="app">
+    <b-container>
+      <!-- <b-row class="justify-center">
+        <Login></Login>
+        <Register></Register>
+      </b-row>
+    </b-container> -->
     <main-page :songs="songs" ></main-page>
     <b-row class="justify-center">
       <Login></Login>
@@ -7,9 +13,7 @@
     </b-row>
     <!-- <upload></upload> -->
     <song-page :song="song"></song-page>
-    <b-container>
-      <aplayer class="shadow" :song="song"></aplayer>
-    </b-container>
+    <aplayer class="shadow" :song="song"></aplayer>
   </div>
 </template>
 

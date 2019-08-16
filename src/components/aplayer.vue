@@ -1,5 +1,5 @@
 <template>
-    <aplayer autoplay
+    <aplayer class="aplayer--active" autoplay
         style="background-color: #222222; color: #ffffff;"
       :music="music"
     ></aplayer>
