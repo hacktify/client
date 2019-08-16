@@ -1,0 +1,264 @@
+$main-color: #FF9900;
+$semi-black-color: #222222;
+$radius: 7px;
+*{
+  font-family: 'Raleway', sans-serif;
+}
+body{
+  min-height: 100vh;
+  background-color: black!important;
+}
+nav{
+  height: 100px;
+  background-color: transparent;
+  .container{
+    display: flex;
+    align-items: baseline;
+  }
+  .brand{
+    // padding: 10px 0;
+    padding-right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    a{
+      color: $main-color;
+      text-decoration: none;
+    }
+  }
+  input[type=text] {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border-radius: $radius;
+    
+  }
+  input[type=text]::placeholder{
+    color: white;
+  }
+  .nav--right{
+    margin-left: 20px;
+    display: flex;
+    button{
+      padding: 8px 40px;
+      background-color: $main-color;
+      color: black;
+      border: 0;
+      outline: 0;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .btn--logout{
+      background-color: $semi-black-color;
+      color: white;
+    }
+  }
+}
+
+.album-cover{
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
+  background-color: $main-color;
+  box-sizing: border-box;
+  border-radius: $radius;
+  .album-cover__icon{
+    i{
+      font-size: 100px;
+      position: absolute;
+      color: black;
+      top: calc(50% - 50px);
+      left: calc(50% - 50px);
+    }
+  }
+}
+.song{
+  outline: 0;
+  margin-bottom: 20px;
+  .song--title{
+    font-size: 25px;
+    padding: 10px 0;
+    color: white;
+  }
+  .song--action{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0;
+    transition: 0.1s;
+    a{
+      color: $main-color;
+      font-size: 40px;
+      transition: 0.1s;
+      outline: none;
+    }
+    a:hover{
+      transition: 0.1s;
+      transform: scale(1.1);
+    }
+    a:focus{
+      box-shadow: 0 0 0 0.2rem $main-color;
+    }
+  }
+}
+.song:hover{
+  text-decoration: none;
+}
+.song:hover .album-cover{
+  text-decoration: none;
+}
+.song:hover .song--action{
+  transition: 0.1s;
+  opacity: 1;
+}
+
+#upload{
+  width: 300px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  background-color: $semi-black-color;
+  color: $main-color;
+  padding: 20px;
+  transition: 0.1s;
+
+  .nav--top{
+    padding: 10px 0px;
+    a{
+      display: inline-block;
+      padding: 10px;
+      color: $main-color;
+      font-size: 18px;
+      text-decoration: none;
+    }
+  }
+  .upload--input{
+    .upload--input--title{
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid $main-color;
+      width: 100%;
+      padding: 10px 0;
+      margin-bottom: 1px;
+      color: white;
+    }
+    .upload--input--title:focus{
+      margin-bottom: 0px;
+      border-bottom: 2px solid $main-color;
+    }
+    .upload--input--title::placeholder{
+      color: $main-color;
+    }
+    #upload--input--file{
+      width: 0.1px;
+      height: 0.1px;
+      opacity: 0;
+      overflow: hidden;
+      position: absolute;
+      z-index: -1;
+    }
+    label{
+      width: 100%;
+      padding-top: 100%;
+      position: relative;
+      cursor: pointer;
+      border: 4px solid $main-color;
+      border-radius: $radius;
+    }
+    span{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 130px;
+      text-align: center;
+    }
+  }
+  .upload--action{
+    button{
+      background-color: $main-color;
+      color: black;
+    }
+  }
+}
+.upload--active{
+  transition: 0.1s;
+  transform: translateX(-300px)
+}
+#song-page{
+  color: white;
+  .song-page--detail{
+    .song--action{
+      .song--action--download{
+        background-color: $main-color;
+        color: black;
+      }
+    }
+    .song--share{
+      background-color: $semi-black-color;
+      display: inline-block;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: $radius;
+      h2{
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+      span{
+        border-radius: 50%;
+        padding: 6px 0;
+        height: 35px;
+        width: 35px;
+        box-sizing: border-box;
+        i{
+          margin: -5px;
+        }
+      }
+    }
+  }
+}
+
+.aplayer{
+  margin: 20px!important;
+  position: fixed!important;
+  bottom: -110px;
+  width: calc(100% - 40px);
+}
+.aplayer--active{
+  transition: 0.1s!important;
+  transform: translateY(-110px)!important;
+}
+
+.justify-center{
+  display: flex;
+  justify-content: center;
+}
+
+.full-center{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+#login, #register{
+  width: 100%;
+  h1{
+    color: $main-color;
+    font-weight: bold;
+  }
+  input[type=submit]{
+    background-color: $main-color;
+    color: black;
+    border: 0;
+  }
+  input[type=submit]:focus{
+    box-shadow: 0 0 0 0.2rem $main-color;
+  }
+}
